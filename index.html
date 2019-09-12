@@ -2,56 +2,113 @@
     <html>
         
         <script>
+            let playerScore = 0;
+            let computerScore = 0;
             
-            function computerPlay() {  
+            
+            function computerPlay()
+            {  
                let x = Math.floor(Math.random() * 3);
-               switch (x) {
+               switch (x)
+               {
                 case 0:
-                    computerChoice = "Rock";
+                    computerChoice = "rock";
                     console.log("Computer chooses rock");
                     return computerChoice; 
                 case 1:
-                    computerChoice = "Paper";
+                    computerChoice = "paper";
                     console.log("Computer chooses paper");
                     return computerChoice; 
                 case 2:
-                    computerChoice = "Scissors";
+                    computerChoice = "scissors";
                     console.log("Computer chooses scissors");
                     return computerChoice; 
-                
-            
                }
-               
             }
             
-            function playRound (playerSelection, computerSelection) {
-                if (playerSelection === computerSelection) {
+            function playRound (playerSelection, computerSelection)
+            {
+                
+                if (playerSelection === computerSelection)
+                {
                     console.log("It's a draw broski");
                 }   
-                    else if (playerSelection === "Rock" && computerSelection === "Paper") {
+                    else if (playerSelection === "rock" && computerSelection === "paper")
+                    {
                     console.log("Damn big homie take this L");
-                    }
-                    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-                    console.log("Props dog you beat a computer");
-                    }
-                    else if (playerSelection === "Paper" && computerSelection === "Rock") {
-                    console.log("Props dog you beat a computer");
-                    }
-                    else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-                    console.log("Damn big homie take this L");
-                    }
-                    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-                    console.log("Props dog you beat a computer");
-                    }
-                    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-                    console.log("Damn big homie take this L");
+                    computerScore++;
                     }
                     
+                    else if (playerSelection === "rock" && computerSelection === "scissors")
+                    {
+                    console.log("Props dog you beat a computer");
+                    playerScore++;
+                    }
+                    
+                    else if (playerSelection === "paper" && computerSelection === "rock")
+                    {
+                    console.log("Props dog you beat a computer");
+                    playerScore++;
+                    }
+                    
+                    else if (playerSelection === "paper" && computerSelection === "scissors")
+                    {
+                    console.log("Damn big homie take this L");
+                    computerScore++;
+                    }
+                    
+                    else if (playerSelection === "scissors" && computerSelection === "paper")
+                    {
+                    console.log("Props dog you beat a computer");
+                    playerScore++;
+                    }
+                    
+                    else if (playerSelection === "scissors" && computerSelection === "rock")
+                    {
+                    console.log("Damn big homie take this L");
+                    computerScore++;
+                    }         
             }
-            const computerSelection = computerPlay();
-            const playerSelection = "Scissors";
-            console.log("Player selects " + playerSelection);
-            (playRound(playerSelection, computerSelection));
+            
+            function playerPlay()
+            {
+                let playerChoice = prompt("Rock, paper, or scissors?");
+                playerChoice = playerChoice.toLowerCase();
+                return playerChoice;
+                
+            }
+            
+            function winner()
+            {
+                
+                return (playerScore > computerScore) ? console.log("You win!")
+                    : console.log("You lose, A.I takeover imminent");
+                
+            }
+            
+            function game ()
+            {
+               
+               var i;
+               for (i = 1; i < 6; i++)
+               {
+                
+                console.log("Round " + i);
+                const playerSelection = playerPlay();
+                console.log("Player chooses " + playerSelection);
+                const computerSelection = computerPlay();
+                (playRound(playerSelection, computerSelection));
+                console.log("Player Score: " + playerScore + "  " + " Computer Score: " + computerScore);
+                
+               }
+               winner();
+            }
+            
+            
+            
+            
+            game();
+            
         </script
         
     </html>
